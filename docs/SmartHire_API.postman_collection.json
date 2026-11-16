@@ -1,0 +1,812 @@
+{
+  "info": {
+    "_postman_id": "7fa84128-4903-4f90-a7bb-9d7a22026999",
+    "name": "SmartHire REST API v9.0",
+    "description": "Comprehensive Postman collection for SmartHire Phase 9 REST API. Includes candidate workflows, recruiter operations, matching, document upload, security, and health checks.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://127.0.0.1:8080/api/v1",
+      "type": "string"
+    },
+    {
+      "key": "candToken",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "recToken",
+      "value": "",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "System & Health",
+      "item": [
+        {
+          "name": "Health Check (Comprehensive)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/health",
+              "host": ["{{baseUrl}}"],
+              "path": ["health"]
+            }
+          }
+        },
+        {
+          "name": "Liveness Probe",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/health/live",
+              "host": ["{{baseUrl}}"],
+              "path": ["health", "live"]
+            }
+          }
+        },
+        {
+          "name": "Readiness Probe",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/health/ready",
+              "host": ["{{baseUrl}}"],
+              "path": ["health", "ready"]
+            }
+          }
+        },
+        {
+          "name": "User Activity Audit",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{candToken}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/activity?limit=20",
+              "host": ["{{baseUrl}}"],
+              "path": ["activity"],
+              "query": [
+                {
+                  "key": "limit",
+                  "value": "20"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Authentication",
+      "item": [
+        {
+          "name": "Register Candidate",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Elena Rostova\",\n  \"email\": \"elena.api@example.com\",\n  \"phone\": \"555-0199\",\n  \"location\": \"Boston, MA\",\n  \"username\": \"elena_candidate\",\n  \"password\": \"SecureP@ssw0rd1\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/auth/register/candidate",
+              "host": ["{{baseUrl}}"],
+              "path": ["auth", "register", "candidate"]
+            }
+          }
+        },
+        {
+          "name": "Register Recruiter",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Marcus Vance\",\n  \"company\": \"CyberDyne Systems\",\n  \"email\": \"marcus.api@cyberdyne.com\",\n  \"username\": \"marcus_recruiter\",\n  \"password\": \"RecruiterP@ss123\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/auth/register/recruiter",
+              "host": ["{{baseUrl}}"],
+              "path": ["auth", "register", "recruiter"]
+            }
+          }
+        },
+        {
+          "name": "Login Candidate",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "var jsonData = pm.response.json();",
+                  "if (jsonData.data && jsonData.data.sessionToken) {",
+                  "    pm.collectionVariables.set('candToken', jsonData.data.sessionToken);",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"elena_candidate\",\n  \"password\": \"SecureP@ssw0rd1\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/auth/login",
+              "host": ["{{baseUrl}}"],
+              "path": ["auth", "login"]
+            }
+          }
+        },
+        {
+          "name": "Login Recruiter",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "var jsonData = pm.response.json();",
+                  "if (jsonData.data && jsonData.data.sessionToken) {",
+                  "    pm.collectionVariables.set('recToken', jsonData.data.sessionToken);",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"marcus_recruiter\",\n  \"password\": \"RecruiterP@ss123\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/auth/login",
+              "host": ["{{baseUrl}}"],
+              "path": ["auth", "login"]
+            }
+          }
+        },
+        {
+          "name": "Who Am I (/auth/me)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{candToken}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/auth/me",
+              "host": ["{{baseUrl}}"],
+              "path": ["auth", "me"]
+            }
+          }
+        },
+        {
+          "name": "Change Password",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{candToken}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"currentPassword\": \"SecureP@ssw0rd1\",\n  \"newPassword\": \"NewSecureP@ss999\",\n  \"confirmPassword\": \"NewSecureP@ss999\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/auth/change-password",
+              "host": ["{{baseUrl}}"],
+              "path": ["auth", "change-password"]
+            }
+          }
+        },
+        {
+          "name": "Logout",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{candToken}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/auth/logout",
+              "host": ["{{baseUrl}}"],
+              "path": ["auth", "logout"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Candidate Profile & Resume",
+      "item": [
+        {
+          "name": "Get Profile",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{candToken}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/candidates/me",
+              "host": ["{{baseUrl}}"],
+              "path": ["candidates", "me"]
+            }
+          }
+        },
+        {
+          "name": "Update Profile",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{candToken}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"phone\": \"555-9988\",\n  \"location\": \"Cambridge, MA\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/candidates/me",
+              "host": ["{{baseUrl}}"],
+              "path": ["candidates", "me"]
+            }
+          }
+        },
+        {
+          "name": "Upload Resume (Multipart)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{candToken}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "resume",
+                  "type": "file",
+                  "src": "data/sample_resume.pdf"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/resume/upload",
+              "host": ["{{baseUrl}}"],
+              "path": ["resume", "upload"]
+            }
+          }
+        },
+        {
+          "name": "Import Local Resume",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{candToken}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"filePath\": \"data/sample_resume.txt\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/resume/import",
+              "host": ["{{baseUrl}}"],
+              "path": ["resume", "import"]
+            }
+          }
+        },
+        {
+          "name": "Get Parsed Resume",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{candToken}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/resume",
+              "host": ["{{baseUrl}}"],
+              "path": ["resume"]
+            }
+          }
+        },
+        {
+          "name": "Resume Quality Analysis",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{candToken}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/resume/analysis",
+              "host": ["{{baseUrl}}"],
+              "path": ["resume", "analysis"]
+            }
+          }
+        },
+        {
+          "name": "Resume Recommendations",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{candToken}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/resume/recommendations",
+              "host": ["{{baseUrl}}"],
+              "path": ["resume", "recommendations"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Jobs & Matching",
+      "item": [
+        {
+          "name": "List Open Jobs",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/jobs?page=1&limit=10",
+              "host": ["{{baseUrl}}"],
+              "path": ["jobs"],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "limit",
+                  "value": "10"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Filter Jobs by Company and Skill",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/jobs?company=Tech&skill=C%2B%2B",
+              "host": ["{{baseUrl}}"],
+              "path": ["jobs"],
+              "query": [
+                {
+                  "key": "company",
+                  "value": "Tech"
+                },
+                {
+                  "key": "skill",
+                  "value": "C++"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Job by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/jobs/J001",
+              "host": ["{{baseUrl}}"],
+              "path": ["jobs", "J001"]
+            }
+          }
+        },
+        {
+          "name": "Calculate Match Rankings",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{candToken}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/matches?limit=5",
+              "host": ["{{baseUrl}}"],
+              "path": ["matches"],
+              "query": [
+                {
+                  "key": "limit",
+                  "value": "5"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Explain Match Breakdown",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{candToken}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/matches/J001/explanation",
+              "host": ["{{baseUrl}}"],
+              "path": ["matches", "J001", "explanation"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Saved Jobs & Applications",
+      "item": [
+        {
+          "name": "List Saved Jobs",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{candToken}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/saved-jobs",
+              "host": ["{{baseUrl}}"],
+              "path": ["saved-jobs"]
+            }
+          }
+        },
+        {
+          "name": "Bookmark Saved Job",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{candToken}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/saved-jobs/J001",
+              "host": ["{{baseUrl}}"],
+              "path": ["saved-jobs", "J001"]
+            }
+          }
+        },
+        {
+          "name": "Remove Saved Job",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{candToken}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/saved-jobs/J001",
+              "host": ["{{baseUrl}}"],
+              "path": ["saved-jobs", "J001"]
+            }
+          }
+        },
+        {
+          "name": "List Applications",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{candToken}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/applications",
+              "host": ["{{baseUrl}}"],
+              "path": ["applications"]
+            }
+          }
+        },
+        {
+          "name": "Apply for Job",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{candToken}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"jobId\": \"J001\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/applications",
+              "host": ["{{baseUrl}}"],
+              "path": ["applications"]
+            }
+          }
+        },
+        {
+          "name": "Withdraw Application",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{candToken}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/applications/1/withdraw",
+              "host": ["{{baseUrl}}"],
+              "path": ["applications", "1", "withdraw"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Recruiter Operations",
+      "item": [
+        {
+          "name": "Post New Job",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{recToken}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"jobId\": \"J_CYBER_REST_01\",\n  \"title\": \"Robotics Systems Engineer\",\n  \"company\": \"CyberDyne Systems\",\n  \"location\": \"Boston, MA\",\n  \"employmentType\": \"Full Time\",\n  \"educationRequirement\": \"Computer Science\",\n  \"minimumExperience\": 2,\n  \"requiredSkills\": [\"C++\", \"Robotics\", \"SQL\"],\n  \"preferredSkills\": [\"Python\", \"ROS\"],\n  \"description\": \"Develop real-time robotics telemetry pipelines.\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/recruiter/jobs",
+              "host": ["{{baseUrl}}"],
+              "path": ["recruiter", "jobs"]
+            }
+          }
+        },
+        {
+          "name": "Update Owned Job",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{recToken}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"description\": \"Lead senior robotics autonomy pipelines in Boston.\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/recruiter/jobs/J_CYBER_REST_01",
+              "host": ["{{baseUrl}}"],
+              "path": ["recruiter", "jobs", "J_CYBER_REST_01"]
+            }
+          }
+        },
+        {
+          "name": "Delete Owned Job",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{recToken}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/recruiter/jobs/J_CYBER_REST_01",
+              "host": ["{{baseUrl}}"],
+              "path": ["recruiter", "jobs", "J_CYBER_REST_01"]
+            }
+          }
+        },
+        {
+          "name": "List Applications for Recruiter Jobs",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{recToken}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/recruiter/applications",
+              "host": ["{{baseUrl}}"],
+              "path": ["recruiter", "applications"]
+            }
+          }
+        },
+        {
+          "name": "Update Application Status",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{recToken}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"SHORTLISTED\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/recruiter/applications/1/status",
+              "host": ["{{baseUrl}}"],
+              "path": ["recruiter", "applications", "1", "status"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Dashboards",
+      "item": [
+        {
+          "name": "Candidate Dashboard",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{candToken}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/dashboard/candidate",
+              "host": ["{{baseUrl}}"],
+              "path": ["dashboard", "candidate"]
+            }
+          }
+        },
+        {
+          "name": "Recruiter Dashboard",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{recToken}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/dashboard/recruiter",
+              "host": ["{{baseUrl}}"],
+              "path": ["dashboard", "recruiter"]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+# Build output
+build/
+*.exe
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Compiled objects
+*.o
+*.obj
+
+# CMake generated
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+
+# OS files
+Thumbs.db
+.DS_Store
+
+# Build tools (portable compiler, not part of project)
+build_tools/
+
+# Generated reports (keep the directory, ignore contents)
+reports/*.txt
+
+# SQLite databases
+data/smarthire.db
+tests/test_smarthire.db
+*.db
+*.db-journal
+
+# Temporary test outputs and scratch files
+*.log
+test_out.txt
+test_run_log.txt
+manual_test_run.txt
+full_test_output.txt
+test_run_verify.txt
+
+# Uploads directory contents (preserve directory)
+data/uploads/*
+!data/uploads/.gitkeep
+
+# Node / Frontend in root contexts
+frontend/node_modules/
+frontend/dist/
+frontend/.env.local
+frontend/.env.*.local
+frontend/*.log

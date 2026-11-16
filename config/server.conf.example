@@ -1,0 +1,28 @@
+# ============================================================
+# SmartHire Server Configuration Template
+# Copy this file to config/server.conf to customize settings.
+# All parameters can also be overridden using environment variables:
+#   SMARTHIRE_HOST, SMARTHIRE_PORT, SMARTHIRE_DB_PATH,
+#   SMARTHIRE_UPLOAD_DIR, SMARTHIRE_CORS_ORIGIN
+# ============================================================
+
+# Network binding
+host=127.0.0.1
+port=8080
+
+# Database storage path
+database_path=data/smarthire.db
+
+# Upload directory for candidate resumes
+upload_directory=data/uploads/
+
+# Security and session settings
+session_timeout_minutes=30
+max_upload_mb=10
+
+# CORS settings for development web client
+cors_origin=http://localhost:5173
+
+# Rate limiting settings (requests per window)
+rate_limit_max_requests=100
+rate_limit_window_seconds=60

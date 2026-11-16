@@ -1,0 +1,59 @@
+[JOB]
+JobId: J001
+Title: Software Engineer
+Company: Infosys Ltd.
+Location: Pune
+EmploymentType: Full Time
+RequiredSkills: C++, SQL, Git, Data Structures
+PreferredSkills: Python, Docker
+Education: Computer Engineering
+MinimumExperience: 1
+Description: Software development role in enterprise products team
+
+[JOB]
+JobId: J002
+Title: C++ Software Developer
+Company: Tech Solutions Pvt. Ltd.
+Location: Pune
+EmploymentType: Full Time
+RequiredSkills: C++, STL, Git
+PreferredSkills: Linux, CMake
+Education: Computer Engineering
+MinimumExperience: 1
+Description: C++ development for high-performance backend systems
+
+[JOB]
+JobId: J003
+Title: Web Developer
+Company: XYZ Software
+Location: Mumbai
+EmploymentType: Full Time
+RequiredSkills: HTML, CSS, JavaScript, React
+PreferredSkills: SQL, Git
+Education: Computer Science
+MinimumExperience: 0
+Description: Frontend development for modern web applications
+
+[JOB]
+JobId: J004
+Title: Java Backend Developer
+Company: Wipro Technologies
+Location: Hyderabad
+EmploymentType: Full Time
+RequiredSkills: Java, SQL, Spring Boot, REST APIs
+PreferredSkills: Docker, Git, JUnit
+Education: Computer Science or IT
+MinimumExperience: 2
+Description: Backend microservices development in Java
+
+[JOB]
+JobId: J005
+Title: Full Stack Developer
+Company: TCS Digital
+Location: Bangalore
+EmploymentType: Full Time
+RequiredSkills: Java, HTML, CSS, SQL
+PreferredSkills: React, Git, Node.js
+Education: Computer Engineering or IT
+MinimumExperience: 1
+Description: Full stack development for client-facing applications

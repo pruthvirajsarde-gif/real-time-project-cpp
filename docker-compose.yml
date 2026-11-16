@@ -1,0 +1,16 @@
+services:
+  smarthire:
+    build: .
+    container_name: smarthire-app
+    ports:
+      - "8080:8080"
+    environment:
+      - SMARTHIRE_HOST=0.0.0.0
+      - SMARTHIRE_PORT=8080
+      - SMARTHIRE_CORS_ORIGIN=*
+    volumes:
+      - smarthire_data:/app/data
+    restart: unless-stopped
+
+volumes:
+  smarthire_data:

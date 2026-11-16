@@ -1,0 +1,20 @@
+[PROFILE]
+Name: Test Candidate
+Email: test@example.com
+Twitter: @testhandle
+
+[UNKNOWN_SECTION]
+SomeKey: SomeValue
+
+[SKILLS]
+C++
+Java
+C++
+
+[EDUCATION]
+Degree: Diploma
+Institution: Test Institute
+Field: Computer Engineering
+StartYear: INVALID_YEAR
+EndYear: 2026
+CGPA: NOT_A_NUMBER

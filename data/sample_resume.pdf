@@ -1,0 +1,83 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 4 0 R >> >> /Contents 5 0 R >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+5 0 obj
+<< /Length 1277 >>
+stream
+BT
+/F1 12 Tf
+72 720 Td
+(PRUTHVIRAJ SARADE) Tj T*
+(Email: pruthviraj@example.com) Tj T*
+(Phone: 9876543210) Tj T*
+(Location: Pune) Tj T*
+(LinkedIn: linkedin.com/in/pruthviraj) Tj T*
+(GitHub: github.com/pruthviraj) Tj T*
+(Portfolio: pruthviraj.dev) Tj T*
+() Tj T*
+(SKILLS) Tj T*
+(C++) Tj T*
+(Java) Tj T*
+(SQL) Tj T*
+(HTML) Tj T*
+(CSS) Tj T*
+(Git) Tj T*
+() Tj T*
+(EDUCATION) Tj T*
+(Degree: Diploma) Tj T*
+(Institution: Zeal Polytechnic) Tj T*
+(Field: Computer Engineering) Tj T*
+(StartYear: 2023) Tj T*
+(EndYear: 2026) Tj T*
+(CGPA: 8.5) Tj T*
+() Tj T*
+(PROJECTS) Tj T*
+(Project: SmartHire) Tj T*
+(Description: Intelligent resume analysis and job matching system) Tj T*
+(Technologies: C++, CMake, STL) Tj T*
+(Role: Developer) Tj T*
+(Duration: 6 months) Tj T*
+() Tj T*
+(Project: KhetSetGo) Tj T*
+(Description: Agricultural machine rental platform) Tj T*
+(Technologies: Java, JSP, MySQL) Tj T*
+(Role: Developer) Tj T*
+(Duration: 8 months) Tj T*
+() Tj T*
+(EXPERIENCE) Tj T*
+(Company: ABC Technologies) Tj T*
+(Position: Software Intern) Tj T*
+(Duration: 6 months) Tj T*
+(Responsibilities: C++ development and testing) Tj T*
+(Technologies: C++, Git) Tj T*
+() Tj T*
+(CERTIFICATIONS) Tj T*
+(Name: C++ Programming) Tj T*
+(Organization: Online Learning Platform) Tj T*
+(Year: 2026) Tj T*
+ET
+endstream
+endobj
+xref
+0 6
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000115 00000 n 
+0000000241 00000 n 
+0000000311 00000 n 
+trailer
+<< /Size 6 /Root 1 0 R >>
+startxref
+1640
+%%EOF

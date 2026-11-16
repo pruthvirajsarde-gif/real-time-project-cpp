@@ -1,0 +1,50 @@
+[PROFILE]
+Name: Pruthviraj Sarade
+Email: pruthviraj@example.com
+Phone: 9876543210
+Location: Pune
+LinkedIn: linkedin.com/in/pruthviraj
+GitHub: github.com/pruthviraj
+Portfolio: pruthviraj.dev
+
+[SKILLS]
+C++
+Java
+SQL
+HTML
+CSS
+Git
+
+[EDUCATION]
+Degree: Diploma
+Institution: Zeal Polytechnic
+Field: Computer Engineering
+StartYear: 2023
+EndYear: 2026
+CGPA: 8.5
+
+[PROJECT]
+Name: SmartHire
+Description: Intelligent resume analysis and job matching system
+Technologies: C++, CMake, STL
+Role: Developer
+Duration: 6 months
+
+[PROJECT]
+Name: KhetSetGo
+Description: Agricultural machine rental platform
+Technologies: Java, JSP, MySQL
+Role: Developer
+Duration: 8 months
+
+[EXPERIENCE]
+Company: ABC Technologies
+Position: Software Intern
+Duration: 6 months
+Responsibilities: C++ development and testing
+Technologies: C++, Git
+
+[CERTIFICATION]
+Name: C++ Programming
+Organization: Online Learning Platform
+Year: 2026

@@ -1,0 +1,62 @@
+# ============================================================
+# SmartHire Skill Taxonomy & Knowledge Dictionary
+# Format: CanonicalName | Category | Aliases(comma-separated) | RelatedSkills(comma-separated)
+# ============================================================
+
+# ── Programming Languages ──────────────────────────────────
+C++ | Programming Languages | cpp, c plus plus, cplusplus, c/c++ | C, STL, CMake
+Java | Programming Languages | java, core java, java 8, java 11, java 17 | Spring Boot, JSP, JUnit, Android
+Python | Programming Languages | python, python3, py | Django, Flask, Pandas, NumPy
+JavaScript | Programming Languages | js, javascript, java script, es6 | TypeScript, Node.js, React
+C# | Programming Languages | csharp, c sharp, c# | .NET, ASP.NET, Unity
+TypeScript | Programming Languages | ts, typescript | JavaScript, Angular, React
+Go | Programming Languages | golang, go | Docker, Kubernetes, Microservices
+PHP | Programming Languages | php, php7, php8 | Laravel, MySQL, WordPress
+Ruby | Programming Languages | ruby | Ruby on Rails
+Kotlin | Programming Languages | kotlin | Android, Java
+Swift | Programming Languages | swift | iOS, Objective-C
+
+# ── Databases ──────────────────────────────────────────────
+SQL | Databases | sql, structured query language, relational database | MySQL, PostgreSQL, SQLite, Oracle
+MySQL | Databases | mysql, my sql, mysql database | SQL, MariaDB, Relational Database
+PostgreSQL | Databases | postgres, postgresql, postgres sql | SQL, Relational Database
+MongoDB | Databases | mongo, mongodb, mongo database | NoSQL, Document Database
+SQLite | Databases | sqlite, sqlite3 | SQL, Embedded Database
+Redis | Databases | redis, redis cache | In-Memory Database, NoSQL, Caching
+Oracle | Databases | oracle, oracle db, pl/sql | SQL, Relational Database
+
+# ── Web Technologies ───────────────────────────────────────
+HTML | Web | html, html5 | CSS, Web Development
+CSS | Web | css, css3 | HTML, Bootstrap, Tailwind, SASS
+React | Web | react, reactjs, react.js | JavaScript, TypeScript, Frontend, Redux
+Node.js | Web | node, nodejs, node.js, node js | JavaScript, Express, Backend, REST API
+Express | Web | express, expressjs, express.js | Node.js, REST API, Backend
+Spring Boot | Web | spring boot, springboot, spring framework | Java, REST API, Microservices
+JSP | Web | jsp, java server pages | Java, Servlets, Web Development
+REST API | Web | rest api, rest apis, restful api, restful apis, web api | HTTP, JSON, Microservices, Backend
+Web Development | Web | web development, web dev, web design | HTML, CSS, JavaScript, Frontend, Backend
+
+# ── Cloud & DevOps ─────────────────────────────────────────
+AWS | Cloud | aws, amazon web services | Cloud Computing, S3, EC2, Lambda
+Azure | Cloud | azure, microsoft azure | Cloud Computing
+Google Cloud | Cloud | gcp, google cloud, google cloud platform | Cloud Computing
+Firebase | Cloud | firebase, google firebase | Cloud, Realtime Database, NoSQL
+Docker | Cloud | docker, containerization, containers | Kubernetes, DevOps, Linux
+Kubernetes | Cloud | k8s, kubernetes | Docker, DevOps, Container Orchestration
+
+# ── Tools & Platforms ──────────────────────────────────────
+Git | Tools | git, version control, source control | GitHub, GitLab, Bitbucket
+GitHub | Tools | github, git hub | Git, Version Control, CI/CD
+GitLab | Tools | gitlab, git lab | Git, CI/CD
+CMake | Tools | cmake, c-make | C++, Make, Build Tools
+Linux | Tools | linux, unix, bash, shell | OS, Operating System, Ubuntu
+JUnit | Tools | junit, junit5 | Java, Testing, Unit Testing
+STL | Tools | stl, standard template library | C++, Data Structures, Algorithms
+
+# ── Computer Science Concepts ──────────────────────────────
+OOP | Concepts | oop, oops, object oriented programming, object-oriented programming | Software Design, Classes, Inheritance
+Data Structures | Concepts | data structures, dsa, data structure | Algorithms, Arrays, Trees, Graphs, Stacks, Queues
+Algorithms | Concepts | algorithms, algorithm, algo | Data Structures, Problem Solving, Optimization
+Software Testing | Concepts | software testing, testing, qa, quality assurance | Unit Testing, Integration Testing, JUnit
+Microservices | Concepts | microservices, microservices architecture, micro-services | REST API, Spring Boot, Docker, Backend
+CI/CD | Concepts | ci/cd, continuous integration, continuous delivery | Git, GitHub, DevOps, Jenkins
