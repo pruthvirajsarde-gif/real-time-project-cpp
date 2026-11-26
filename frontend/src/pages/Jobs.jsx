@@ -58,6 +58,7 @@ export const Jobs = () => {
         setJobs(res.data.items || []);
         setTotal(res.data.total || 0);
         setTotalPages(res.data.totalPages || 1);
+        setError(null);
       }
 
       // If candidate, load match scores and saved bookmarks
